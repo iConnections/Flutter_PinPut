@@ -357,7 +357,7 @@ class CustomBorderGradientPainter extends CustomPainter {
 
     // apply gradient shader
     if (!bold || disabled) {
-      _paint.shader = gradient.createShader(outerRect)?;
+      _paint.shader = gradient?.createShader(outerRect);
     }
 
     // create difference between outer and inner paths and draw it
