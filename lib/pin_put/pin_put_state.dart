@@ -196,10 +196,13 @@ class PinPutState extends State<PinPut>
                 strokeWidth: 1,
                 radius: 8,
                 gradient: LinearGradient(
-  begin: Alignment.bottomLeft,
-  end: Alignment.topRight,
-  colors: [Color(0xFF73AFE8), Color(0xffD9F1F6)],
-),
+  begin: Alignment.topRight,
+  end: Alignment.bottomLeft,
+  colors: [
+    Color(0xffAEF3FF),
+    Color(0xff8840A0),
+  ],
+)
               ),
               child: Container(
                 // height: 200,
@@ -325,23 +328,26 @@ class PinPutState extends State<PinPut>
 
 class CustomBorderGradientPainter extends CustomPainter {
   final Paint _paint = Paint()..color = Colors.white;
-  final double? radius;
-  final double? strokeWidth;
-  final Gradient? gradient;
+  final double radius;
+  final double strokeWidth;
+  final Gradient gradient;
   final bool bold;
   final bool disabled;
 
   CustomBorderGradientPainter({
-     double? strokeWidth,
-     double? radius,
-     Gradient? gradient,
+     this.strokeWidth = 1,
+     this.radius = 8,
+     this.gradient = LinearGradient(
+  begin: Alignment.topRight,
+  end: Alignment.bottomLeft,
+  colors: [
+    Color(0xffAEF3FF),
+    Color(0xff8840A0),
+  ],
+),
     bool bold = false,
     bool disabled = false,
-  })  : this.strokeWidth = strokeWidth,
-        this.radius = radius,
-        this.bold = bold,
-        this.disabled = disabled,
-        this.gradient = gradient;
+  });
 
   @override
   void paint(Canvas canvas, Size size) {
