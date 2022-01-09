@@ -337,16 +337,9 @@ class CustomBorderGradientPainter extends CustomPainter {
   CustomBorderGradientPainter({
      this.strokeWidth = 1,
      this.radius = 8,
-     this.gradient = LinearGradient(
-  begin: Alignment.topRight,
-  end: Alignment.bottomLeft,
-  colors: [
-    Color(0xffAEF3FF),
-    Color(0xff8840A0),
-  ],
-),
-    bool bold = false,
-    bool disabled = false,
+     this.gradient,
+    this.bold = false,
+    this.disabled = false,
   });
 
   @override
