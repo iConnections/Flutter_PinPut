@@ -332,9 +332,9 @@ class CustomBorderGradientPainter extends CustomPainter {
   final bool disabled;
 
   CustomBorderGradientPainter({
-    @required double strokeWidth,
-    @required double radius,
-    @required Gradient gradient,
+     double? strokeWidth,
+     double? radius,
+     Gradient? gradient,
     bool bold = false,
     bool disabled = false,
   })  : this.strokeWidth = strokeWidth,
