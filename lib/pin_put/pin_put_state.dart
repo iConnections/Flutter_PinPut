@@ -325,9 +325,9 @@ class PinPutState extends State<PinPut>
 
 class CustomBorderGradientPainter extends CustomPainter {
   final Paint _paint = Paint()..color = Colors.white;
-  final double radius;
-  final double strokeWidth;
-  final Gradient gradient;
+  final double? radius;
+  final double? strokeWidth;
+  final Gradient? gradient;
   final bool bold;
   final bool disabled;
 
