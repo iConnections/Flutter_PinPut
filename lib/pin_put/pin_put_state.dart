@@ -174,32 +174,32 @@ class PinPutState extends State<PinPut>
         Stack(
           children: [
             Container(
-              // height: cardHeight,
-              // width: cardWidth,
-              decoration: noShadow
-                  ? BoxDecoration(
+              decoration:  BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(8),
-                    )
-                  : BoxDecoration(
-                      color: Colors.white,
-                      boxShadow: [kAlternativeBoxShadow],
+                      boxShadow: [BoxShadow(
+  color: Color.fromRGBO(121, 98, 249, 0.13),
+  offset: Offset(2, 4),
+  blurRadius: 12,
+),],
                       borderRadius: BorderRadius.circular(8),
                     ),
               constraints: BoxConstraints(
-                minWidth: 343,
-                minHeight: height,
+                minWidth: widget.eachFieldWidth,
+                minHeight: widget.eachFieldHeight,
               ),
               child: Container(
-                  // height: 64,
-                  // width: 64,
+        
                   ),
             ),
             CustomPaint(
               painter: CustomBorderGradientPainter(
-                strokeWidth: strokeWidth,
+                strokeWidth: 1,
                 radius: 8,
-                gradient: gradient,
+                gradient: LinearGradient(
+  begin: Alignment.bottomLeft,
+  end: Alignment.topRight,
+  colors: [Color(0xFF73AFE8), Color(0xffD9F1F6)],
+),
               ),
               child: Container(
                 // height: 200,
@@ -208,7 +208,7 @@ class PinPutState extends State<PinPut>
                   // color: Colors.white,
                   borderRadius: BorderRadius.circular(8),
                 ),
-                constraints: BoxConstraints(minWidth: 343, minHeight: height),
+                constraints: BoxConstraints(minWidth: widget.eachFieldWidth, minHeight: widget.eachFieldHeight,),
               ),
             ),
           ],
