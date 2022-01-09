@@ -169,7 +169,51 @@ class PinPutState extends State<PinPut>
 
   Widget _getField(int index) {
     final String pin = _controller!.value.text;
-    return AnimatedContainer(
+    return Stack(
+      children: [
+        Stack(
+          children: [
+            Container(
+              // height: cardHeight,
+              // width: cardWidth,
+              decoration: noShadow
+                  ? BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(8),
+                    )
+                  : BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [kAlternativeBoxShadow],
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+              constraints: BoxConstraints(
+                minWidth: 343,
+                minHeight: height,
+              ),
+              child: Container(
+                  // height: 64,
+                  // width: 64,
+                  ),
+            ),
+            CustomPaint(
+              painter: CustomBorderGradientPainter(
+                strokeWidth: strokeWidth,
+                radius: 8,
+                gradient: gradient,
+              ),
+              child: Container(
+                // height: 200,
+                // width: 200,
+                decoration: BoxDecoration(
+                  // color: Colors.white,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                constraints: BoxConstraints(minWidth: 343, minHeight: height),
+              ),
+            ),
+          ],
+        ),
+        AnimatedContainer(
       width: widget.eachFieldWidth,
       height: widget.eachFieldHeight,
       alignment: widget.eachFieldAlignment,
@@ -188,6 +232,8 @@ class PinPutState extends State<PinPut>
         },
         child: _buildFieldContent(index, pin),
       ),
+    ),
+      ],
     );
   }
 
@@ -275,4 +321,54 @@ class PinPutState extends State<PinPut>
       },
     );
   }
+}
+
+class CustomBorderGradientPainter extends CustomPainter {
+  final Paint _paint = Paint()..color = Colors.white;
+  final double radius;
+  final double strokeWidth;
+  final Gradient gradient;
+  final bool bold;
+  final bool disabled;
+
+  CustomBorderGradientPainter({
+    @required double strokeWidth,
+    @required double radius,
+    @required Gradient gradient,
+    bool bold = false,
+    bool disabled = false,
+  })  : this.strokeWidth = strokeWidth,
+        this.radius = radius,
+        this.bold = bold,
+        this.disabled = disabled,
+        this.gradient = gradient;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    // create outer rectangle equals size
+    Rect outerRect = Offset.zero & size;
+    var outerRRect =
+        RRect.fromRectAndRadius(outerRect, Radius.circular(radius));
+
+    // create inner rectangle smaller by strokeWidth
+    Rect innerRect = Rect.fromLTWH(strokeWidth, strokeWidth,
+        size.width - strokeWidth * 2, size.height - strokeWidth * 2);
+    var innerRRect = RRect.fromRectAndRadius(
+        innerRect, Radius.circular(radius - strokeWidth));
+
+    // apply gradient shader
+    if (!bold || disabled) {
+      _paint.shader = gradient.createShader(outerRect);
+    }
+
+    // create difference between outer and inner paths and draw it
+    Path path1 = Path()..addRRect(outerRRect);
+    Path path2 = Path()..addRRect(innerRRect);
+    var path = Path.combine(PathOperation.difference, path1, path2);
+    // canvas.rotate(math.pi / 2);
+    canvas.drawPath(path, _paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => oldDelegate != this;
 }
