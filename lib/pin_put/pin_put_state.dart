@@ -330,14 +330,14 @@ class CustomBorderGradientPainter extends CustomPainter {
   final Paint _paint = Paint()..color = Colors.white;
   final double radius;
   final double strokeWidth;
-  final Gradient gradient;
+  final Gradient? gradient;
   final bool bold;
   final bool disabled;
 
   CustomBorderGradientPainter({
      this.strokeWidth = 1,
      this.radius = 8,
-     @required this.gradient,
+     this.gradient,
     this.bold = false,
     this.disabled = false,
   });
