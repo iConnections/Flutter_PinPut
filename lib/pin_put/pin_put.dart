@@ -126,10 +126,10 @@ class PinPut extends StatefulWidget {
   final BoxDecoration? disabledDecoration;
 
   /// width of each [PinPut] field
-  final double? eachFieldWidth;
+  final double eachFieldWidth;
 
   /// height of each [PinPut] field
-  final double? eachFieldHeight;
+  final double eachFieldHeight;
 
   /// Defines how [PinPut] fields are being placed inside [Row]
   final MainAxisAlignment fieldsAlignment;
