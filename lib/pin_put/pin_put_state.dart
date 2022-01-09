@@ -337,7 +337,7 @@ class CustomBorderGradientPainter extends CustomPainter {
   CustomBorderGradientPainter({
      this.strokeWidth = 1,
      this.radius = 8,
-     this.gradient,
+     @required this.gradient,
     this.bold = false,
     this.disabled = false,
   });
