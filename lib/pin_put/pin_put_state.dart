@@ -210,6 +210,7 @@ class PinPutState extends State<PinPut>
               ),
               child: Container(
                 decoration: BoxDecoration(
+                color: widget.isDark ? Color(0xffF8F9FC) : Colors.white,
                   borderRadius: BorderRadius.circular(8),
                 ),
                 constraints: BoxConstraints(minWidth: widget.eachFieldWidth, minHeight: widget.eachFieldHeight,),
