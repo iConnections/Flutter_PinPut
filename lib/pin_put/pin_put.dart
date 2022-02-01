@@ -24,6 +24,7 @@ class PinPut extends StatefulWidget {
       this.disabledDecoration,
       this.eachFieldWidth = 50,
       this.eachFieldHeight = 72,
+       this.isDark = false,
       this.fieldsAlignment = MainAxisAlignment.spaceBetween,
       this.eachFieldAlignment = Alignment.center,
       this.eachFieldMargin,
@@ -131,6 +132,8 @@ class PinPut extends StatefulWidget {
   /// height of each [PinPut] field
   final double eachFieldHeight;
 
+  final bool isDark;
+  
   /// Defines how [PinPut] fields are being placed inside [Row]
   final MainAxisAlignment fieldsAlignment;
 
