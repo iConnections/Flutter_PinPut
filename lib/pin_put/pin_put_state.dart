@@ -175,7 +175,7 @@ class PinPutState extends State<PinPut>
           children: [
             Container(
               decoration:  BoxDecoration(
-                      color: widget.isDark ? Color(0xffF8F9FC) : Colors.white,
+                      color: widget.isDark ? Color(0xff1C212B) : Colors.white,
                       boxShadow: [ widget.isDark ? BoxShadow(
   color: Color.fromRGBO(28, 31, 38, 0.81),
   offset: Offset(2, 4),
@@ -210,7 +210,6 @@ class PinPutState extends State<PinPut>
               ),
               child: Container(
                 decoration: BoxDecoration(
-                color: widget.isDark ? Color(0xffF8F9FC) : Colors.white,
                   borderRadius: BorderRadius.circular(8),
                 ),
                 constraints: BoxConstraints(minWidth: widget.eachFieldWidth, minHeight: widget.eachFieldHeight,),
