@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pinput/pin_put/pin_put.dart';
+import 'package:flutter/foundation.dart';
 
 class AlwaysDisabledFocusNode extends FocusNode {
   @override
@@ -195,7 +196,7 @@ class PinPutState extends State<PinPut>
         
                   ),
             ),
-            CustomPaint(
+            kIsWeb ? Container() : CustomPaint(
               painter: CustomBorderGradientPainter(
                 strokeWidth: 1,
                 radius: 8,
