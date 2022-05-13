@@ -43,7 +43,7 @@ class PinPutState extends State<PinPut>
       _cursorAnimationController!.forward();
     }
 
-    WidgetsBinding.instance!.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
     super.initState();
   }
 
